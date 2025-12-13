@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PC Wallpapers Slider</title>
+
+    <style>
+        body{
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            height:100vh;
+            background:#111;
+        }
+
+        .slider{
+            width:150px;
+            text-align:center;
+        }
+
+        .slider img{
+            width:300px;
+            height:300px;
+            object-fit:cover;
+            border-radius:10px;
+            display:none;
+        }
+
+        .slider img.active{
+            display:block;
+        }
+
+        button{
+            margin-top:10px;
+            padding:5px 10px;
+            cursor:pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div class="slider">
+    <img class="active" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsdQkLeu28UWb63N8WX2dh4snixBqDGvXfPM63sj4m4cZo0fubecqmSyQ&s">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWsOIl1ZewSyP--sJxXuP0mLJhyZ70ZTaMcn_ix_JitXlfFjSyjPL545w&s">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRssNnaHDCJlLHkYhgEHW926Y6R2Lc0Pj-tM_j-hXvMJesPQm82Rjsg6Kg&s">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzD7JYrVoLAOD1denqPyDgf9cq6nyIOrbnBAjKrrnySaKMTUKrhiTATAI&s">
+
+    <button onclick="prev()">◀</button>
+    <button onclick="next()">▶</button>
+</div>
+
+<script>
+    let index = 0;
+    const images = document.querySelectorAll(".slider img");
+
+    function showImage(i){
+        images.forEach(img => img.classList.remove("active"));
+        images[i].classList.add("active");
+    }
+
+    function next(){
+        index = (index + 1) % images.length;
+        showImage(index);
+    }
+
+    function prev(){
+        index = (index - 1 + images.length) % images.length;
+        showImage(index);
+    }
+</script>
+
+</body>
+</html>
